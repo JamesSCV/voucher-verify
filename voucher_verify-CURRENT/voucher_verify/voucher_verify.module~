@@ -1,0 +1,56 @@
+<?php
+/**
+ * Implementation of hook_webform_validation_validators().
+ */
+function voucher_verify_webform_validation_validators() {
+  return array(
+    'voucher_id' => array(
+      'name' => "Validate Certificate/Voucher ID",
+      'component_types' => array(
+        'textfield',
+      ),
+    )
+  );
+}
+
+/**
+ * Implementation of hook_webform_validation_validate().
+ */
+function voucher_verify_webform_validation_validate($validator_name, $items, $components, $rule) {
+  if ($items) {
+    $errors = array();
+    switch ($validator_name) {
+      case 'voucher_id':
+        foreach ($items as $key => $val) {
+          // Validate the ID against check digit
+		     	$ID = "";
+         	$ID = $key;
+         	echo var_dump($key);
+         	/*
+		     	$vendorID = substr($ID, 0, 4);    // Vendor ID is first 4 digits
+		     	$voucherID = substr($ID, 4, 3);   // Voucher ID is the next 3 digits
+		     	$voucherNum = substr($ID, 7, 7);  // Voucher Number is the next 7 digits
+		     	$checkDigit = substr($ID, -1, 1); // Check digit is the last digit
+		     	$digitArray = array();
+		     	$factorArray = array(1,3,1,3,1,3,1,3,1,3,1,3,1,3);
+		     	// Split the string into individual digits
+		     	for($i = 0; $i < count($factorArray); $i++){
+		     		$digitArray[$i] = substr($ID, $i, 1);
+		     	}
+		     	// Sum product of paired digits
+		     	$sum = 0;
+		     	for($i = 0; $i < count($digitArray); i++){
+		     		$sum += $factorArray[$i] * $digitArray[$i];
+		     	}
+		     	// Calculate valid digit
+		     	$validDigit = 10 - ($sum % 10);
+		      // Check against the check digit
+		      if($validDigit != $checkDigit){
+		      	$errors[$key] = t('%item is not a valid ID: Check digit is invalid', array('%item' => $components[$key]['name']));
+		      }
+        }*/
+        return $errors;
+        break;
+    }
+  }
+}

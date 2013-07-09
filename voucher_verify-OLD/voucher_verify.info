@@ -1,0 +1,5 @@
+name = Voucher Verify
+description = Verifies the Certificate/Voucher ID numbers.
+core = 7.x
+dependancies[] = webform
+dependancies[] = webform_validation

@@ -1,0 +1,9 @@
+name = Voucher Verify
+description = "Adds verification for Certificate/Voucher ID's."
+core = 7.x
+dependencies[] = webform
+dependencies[] = webform_validation
+package = Webform
+files[] = voucher_verify.module
+
+version = "7.x - 0.1-alpha"
